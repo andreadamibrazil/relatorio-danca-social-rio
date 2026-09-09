@@ -1,0 +1,213 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Reagendamento — Dança RJ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+ :root{--fundo:#EEF0EC;--sup:#fff;--sup2:#F5F7F3;--tinta:#181C19;--tinta2:#4B534D;
+   --tinta3:#79837B;--linha:#D6DCD4;--verde:#1C6349;--ambar:#A9611A;--ambar-s:#F7EBDD}
+ @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+   --fundo:#141815;--sup:#1D221E;--sup2:#252B26;--tinta:#EDF0EC;--tinta2:#B4BDB6;
+   --tinta3:#8A948C;--linha:#333B35;--verde:#59B78F;--ambar:#E0A462;--ambar-s:#2C2013}}
+ :root[data-theme=dark]{--fundo:#141815;--sup:#1D221E;--sup2:#252B26;--tinta:#EDF0EC;
+   --tinta2:#B4BDB6;--tinta3:#8A948C;--linha:#333B35;--verde:#59B78F;--ambar:#E0A462;--ambar-s:#2C2013}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--fundo);color:var(--tinta);padding-bottom:3rem;
+   font:400 16px/1.5 "Public Sans",-apple-system,Arial,sans-serif;-webkit-text-size-adjust:100%}
+ .w{max-width:34rem;margin:0 auto;padding:0 1rem}
+ header{padding:1.5rem 0 .8rem}
+ .eb{font:500 .7rem/1 "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--ambar)}
+ h1{font:700 clamp(1.4rem,6vw,1.9rem)/1.12 "Bricolage Grotesque","Public Sans",sans-serif;
+   margin:.5rem 0 .5rem;letter-spacing:-.01em}
+ .aviso{background:var(--ambar-s);border-left:3px solid var(--ambar);border-radius:0 8px 8px 0;
+   padding:.8rem .9rem;font-size:.92rem;margin:.8rem 0 1rem}
+ .aviso b{font-weight:600}
+ .barra{position:sticky;top:0;z-index:9;background:var(--fundo);padding:.7rem 0;
+   border-bottom:1px solid var(--linha);margin-bottom:.9rem}
+ .prog{display:flex;align-items:baseline;gap:.45rem}
+ .prog .n{font:500 1.3rem/1 "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+ .prog .l{font-size:.8rem;color:var(--tinta3)}
+ .tr{height:5px;background:var(--linha);border-radius:99px;overflow:hidden;margin-top:.5rem}
+ .tr i{display:block;height:100%;width:0;background:var(--verde);transition:width .25s}
+ ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem}
+ .c{background:var(--sup);border:1px solid var(--linha);border-radius:10px;padding:.8rem .85rem}
+ .c.ok{opacity:.5}
+ .c.ok .zap{background:var(--sup2);color:var(--tinta3);border-color:var(--linha)}
+ .top{display:flex;gap:.6rem;align-items:flex-start}
+ .num{font:500 .95rem/1.6rem "IBM Plex Mono",monospace;min-width:1.6rem;height:1.6rem;
+   text-align:center;background:var(--sup2);border-radius:6px;color:var(--tinta2);flex:none}
+ .id{flex:1;display:flex;flex-direction:column;gap:.12rem;min-width:0}
+ .proj{font:600 1rem/1.25 "Public Sans",sans-serif;overflow-wrap:anywhere}
+ .quem{font-size:.85rem;color:var(--tinta2)}
+ .tel{font:500 .84rem "IBM Plex Mono",monospace;color:var(--tinta3)}
+ .mk{flex:none;width:2rem;height:2rem;border-radius:6px;border:1px solid var(--linha);
+   background:var(--sup2);color:var(--tinta3);cursor:pointer;font-size:.95rem}
+ .c.ok .mk{background:var(--verde);border-color:var(--verde);color:#fff}
+ .zap{display:block;margin-top:.7rem;text-align:center;text-decoration:none;
+   background:var(--verde);color:#fff;font:600 .95rem "Public Sans",sans-serif;
+   padding:.75rem;border-radius:8px;border:1px solid var(--verde)}
+ .zap:active{transform:translateY(1px)}
+ .mk:focus-visible,.zap:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+ footer{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--linha);
+   font-size:.82rem;color:var(--tinta3)}
+ @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body><div class="w">
+<header>
+  <div class="eb">Movimento Social da Dança RJ</div>
+  <h1>Avisar os 16 sobre a nova data</h1>
+  <div class="aviso">O encontro saiu de <b>quinta 10/09</b> e passou para
+    <b>terça 15/09, 11h</b> — mesmo local, Praça Floriano Peixoto 51, 20º andar, Cinelândia.
+    A mudança veio da agenda do prefeito, que mexeu na agenda da vereadora.</div>
+  <p style="font-size:.92rem;color:var(--tinta2);margin:.6rem 0 0">
+    Toque em <b>Abrir no WhatsApp</b>: a conversa abre com a mensagem já escrita e o nome do projeto
+    dentro dela. Só conferir e enviar. O cartão fica marcado sozinho — dá pra parar e voltar depois.</p>
+</header>
+<div class="barra">
+  <div class="prog"><span class="n" id="f">0</span><span class="l">de 16 avisados</span></div>
+  <div class="tr"><i id="t"></i></div>
+</div>
+<ul id="l">
+<li class="c" data-id="1">
+  <div class="top"><span class="num">1</span>
+    <div class="id"><span class="proj">Dança Educa / Núcleo de Artes Cidade de Deus</span>
+      <span class="tel">(21) 97363-3294</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521973633294?text=Oi%21%20Falo%20com%20o%20pessoal%20do%20Dan%C3%A7a%20Educa%20/%20N%C3%BAcleo%20de%20Artes%20Cidade%20de%20Deus%3F%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Dan%C3%A7a%20Educa%20/%20N%C3%BAcleo%20de%20Artes%20Cidade%20de%20Deus%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="2">
+  <div class="top"><span class="num">2</span>
+    <div class="id"><span class="proj">Projeto Vida — Lyceu Escola de Dança</span><span class="quem">Márcia</span>
+      <span class="tel">(21) 97442-3896</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521974423896?text=Oi%2C%20M%C3%A1rcia%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Projeto%20Vida%20%E2%80%94%20Lyceu%20Escola%20de%20Dan%C3%A7a%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="3">
+  <div class="top"><span class="num">3</span>
+    <div class="id"><span class="proj">EntrArte</span><span class="quem">Márcia</span>
+      <span class="tel">(21) 99195-5115</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521991955115?text=Oi%2C%20M%C3%A1rcia%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20EntrArte%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="4">
+  <div class="top"><span class="num">4</span>
+    <div class="id"><span class="proj">Projeto Dançar — CADM</span><span class="quem">Daniela</span>
+      <span class="tel">(21) 99496-6001</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521994966001?text=Oi%2C%20Daniela%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Projeto%20Dan%C3%A7ar%20%E2%80%94%20CADM%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="5">
+  <div class="top"><span class="num">5</span>
+    <div class="id"><span class="proj">Instituto Efeito Urbano</span><span class="quem">Ellen</span>
+      <span class="tel">(21) 99867-1504</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521998671504?text=Oi%2C%20Ellen%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Instituto%20Efeito%20Urbano%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="6">
+  <div class="top"><span class="num">6</span>
+    <div class="id"><span class="proj">Instituto Verde Criando Vidas</span>
+      <span class="tel">(21) 98383-6614</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521983836614?text=Oi%21%20Falo%20com%20o%20pessoal%20do%20Instituto%20Verde%20Criando%20Vidas%3F%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Instituto%20Verde%20Criando%20Vidas%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="7">
+  <div class="top"><span class="num">7</span>
+    <div class="id"><span class="proj">ACANE — Artes Negras Betho Pacheco</span>
+      <span class="tel">(21) 96466-1276</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521964661276?text=Oi%21%20Falo%20com%20o%20pessoal%20do%20ACANE%20%E2%80%94%20Artes%20Negras%20Betho%20Pacheco%3F%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20ACANE%20%E2%80%94%20Artes%20Negras%20Betho%20Pacheco%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="8">
+  <div class="top"><span class="num">8</span>
+    <div class="id"><span class="proj">Made In La Vie</span><span class="quem">Felipe</span>
+      <span class="tel">(21) 96598-0389</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521965980389?text=Oi%2C%20Felipe%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Made%20In%20La%20Vie%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="9">
+  <div class="top"><span class="num">9</span>
+    <div class="id"><span class="proj">Projeto Dançar (Méier)</span><span class="quem">Ana Cecília</span>
+      <span class="tel">(21) 98648-6020</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521986486020?text=Oi%2C%20Ana%20Cec%C3%ADlia%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Projeto%20Dan%C3%A7ar%20%28M%C3%A9ier%29%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="10">
+  <div class="top"><span class="num">10</span>
+    <div class="id"><span class="proj">Projeto Social Dançar faz Bem</span><span class="quem">Angelim</span>
+      <span class="tel">(21) 96465-8391</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521964658391?text=Oi%2C%20Angelim%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Projeto%20Social%20Dan%C3%A7ar%20faz%20Bem%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="11">
+  <div class="top"><span class="num">11</span>
+    <div class="id"><span class="proj">Instituto Espaço Aberto</span><span class="quem">Yolanda</span>
+      <span class="tel">(21) 98726-8037</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521987268037?text=Oi%2C%20Yolanda%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Instituto%20Espa%C3%A7o%20Aberto%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="12">
+  <div class="top"><span class="num">12</span>
+    <div class="id"><span class="proj">Artistas da Lua</span><span class="quem">Luana</span>
+      <span class="tel">(21) 99616-7027</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521996167027?text=Oi%2C%20Luana%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Artistas%20da%20Lua%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="13">
+  <div class="top"><span class="num">13</span>
+    <div class="id"><span class="proj">Cia Livre de Dança da Rocinha</span><span class="quem">Ana Lúcia</span>
+      <span class="tel">(21) 99299-9180</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521992999180?text=Oi%2C%20Ana%20L%C3%BAcia%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Cia%20Livre%20de%20Dan%C3%A7a%20da%20Rocinha%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="14">
+  <div class="top"><span class="num">14</span>
+    <div class="id"><span class="proj">Espaço Aberto Gardênia Azul</span><span class="quem">Aparecida</span>
+      <span class="tel">(21) 99395-1672</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521993951672?text=Oi%2C%20Aparecida%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Espa%C3%A7o%20Aberto%20Gard%C3%AAnia%20Azul%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="15">
+  <div class="top"><span class="num">15</span>
+    <div class="id"><span class="proj">Dança para Todos — CAED</span>
+      <span class="tel">(21) 99368-0649</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521993680649?text=Oi%21%20Falo%20com%20o%20pessoal%20do%20Dan%C3%A7a%20para%20Todos%20%E2%80%94%20CAED%3F%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Dan%C3%A7a%20para%20Todos%20%E2%80%94%20CAED%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+<li class="c" data-id="16">
+  <div class="top"><span class="num">16</span>
+    <div class="id"><span class="proj">Academia de Dança Juliana Coelho</span><span class="quem">Juliana</span>
+      <span class="tel">(21) 96776-0269</span></div>
+    <button class="mk" aria-label="marcar como enviado">✓</button></div>
+  <a class="zap" href="https://wa.me/5521967760269?text=Oi%2C%20Juliana%21%20Aqui%20%C3%A9%20o%20Carlos%20Fontinelle%2C%20da%20Sede%20do%20Movimento.%0A%0AAntes%20de%20tudo%2C%20obrigado%20por%20preencher%20o%20formul%C3%A1rio%20do%20%2AMovimento%20Social%20da%20Dan%C3%A7a%20RJ%2A%20%E2%80%94%20a%20presen%C3%A7a%20do%20Academia%20de%20Dan%C3%A7a%20Juliana%20Coelho%20est%C3%A1%20confirmada.%0A%0AEscrevo%20para%20avisar%20de%20uma%20mudan%C3%A7a%20de%20data.%20%2AO%20encontro%20que%20seria%20amanh%C3%A3%2C%20dia%2010%2C%20foi%20remarcado%20para%20ter%C3%A7a%2C%2015%20de%20setembro%2A%2C%20por%20conta%20de%20uma%20altera%C3%A7%C3%A3o%20na%20agenda%20do%20prefeito%20que%20mexeu%20na%20agenda%20da%20vereadora%20Ver%C3%B4nica%20Lima.%0A%0AFica%20no%20mesmo%20hor%C3%A1rio%20e%20no%20mesmo%20lugar%3A%0A%F0%9F%93%85%20%2Ater%C3%A7a%2C%2015/09%2A%0A%F0%9F%95%9A%20%2A11h%2A%0A%F0%9F%93%8D%20Pra%C3%A7a%20Floriano%20Peixoto%2051%2C%2020%C2%BA%20andar%20%E2%80%94%20Cinel%C3%A2ndia%0A%0ADesculpa%20o%20transtorno%20de%20%C3%BAltima%20hora.%20A%20pauta%20continua%20a%20mesma%3A%20bolsa%20de%20estudo%2C%20atua%C3%A7%C3%A3o%20nos%20territ%C3%B3rios%2C%20parceria%20com%20o%20poder%20p%C3%BAblico%20e%20a%20forma%C3%A7%C3%A3o%20de%20uma%20rede%20entre%20os%20projetos%20de%20dan%C3%A7a%20da%20cidade.%0A%0AConsegue%20estar%20l%C3%A1%20no%20dia%2015%3F%20Me%20confirma%20por%20aqui%2C%20por%20favor%20%E2%80%94%20assim%20eu%20ajusto%20a%20lista%20de%20presen%C3%A7a." target="_blank" rel="noopener">Abrir no WhatsApp</a>
+</li>
+</ul>
+<footer>Ordem sugerida: de cima para baixo. Se algum número estiver errado, me avisa que eu troco.<br>
+Sede do Movimento · lista gerada em 09/09/2026.</footer>
+</div>
+<script>
+ var K='reag15set';
+ function ler(){try{return JSON.parse(localStorage.getItem(K)||'[]')}catch(e){return[]}}
+ function grav(a){try{localStorage.setItem(K,JSON.stringify(a))}catch(e){}}
+ var fe=ler();
+ function pinta(){
+   var n=0;
+   document.querySelectorAll('.c').forEach(function(c){
+     var ok=fe.indexOf(c.dataset.id)>=0;
+     c.classList.toggle('ok',ok); if(ok)n++;
+     c.querySelector('.mk').textContent=ok?'✓':'';
+   });
+   document.getElementById('f').textContent=n;
+   document.getElementById('t').style.width=(n/16*100)+'%';
+ }
+ function alterna(id){
+   var i=fe.indexOf(id);
+   if(i>=0){fe.splice(i,1)}else{fe.push(id)}
+   grav(fe);pinta();
+ }
+ document.querySelectorAll('.c').forEach(function(c){
+   c.querySelector('.mk').addEventListener('click',function(){alterna(c.dataset.id)});
+   c.querySelector('.zap').addEventListener('click',function(){
+     if(fe.indexOf(c.dataset.id)<0){alterna(c.dataset.id)}
+   });
+ });
+ pinta();
+</script></body></html>
