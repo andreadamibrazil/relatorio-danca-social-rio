@@ -1,0 +1,356 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Relatorio sobre as organizacoes de danca social do Rio de Janeiro: quantas sao, quanto financiamento chega, e cinco propostas de politica publica."><meta name="robots" content="noindex"><title>A Dança que a Cidade Não Conta</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --papel:#F5F4F0; --sup:#FFFFFF; --sup2:#EFEEE8;
+    --tinta:#191A17; --tinta2:#4E504A; --tinta3:#7E8179;
+    --linha:#DAD8CF; --linha2:#E7E5DD;
+    --azul:#1D6DAE; --ambar:#C06A12;
+    --azul-fraco:#E6EFF7; --ambar-fraco:#F9EEE0;
+    --grade:#E4E2DA;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --papel:#15171A; --sup:#1C1F22; --sup2:#23272B;
+      --tinta:#ECEEEA; --tinta2:#B0B5B0; --tinta3:#858A85;
+      --linha:#31363A; --linha2:#282D31;
+      --azul-fraco:#132537; --ambar-fraco:#2E2113;
+      --grade:#2B3034;
+    }
+  }
+  :root[data-theme="dark"]{
+    --papel:#15171A; --sup:#1C1F22; --sup2:#23272B;
+    --tinta:#ECEEEA; --tinta2:#B0B5B0; --tinta3:#858A85;
+    --linha:#31363A; --linha2:#282D31;
+    --azul-fraco:#132537; --ambar-fraco:#2E2113;
+    --grade:#2B3034;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--papel);color:var(--tinta);
+       font:400 16.5px/1.62 "Public Sans","Helvetica Neue",Arial,sans-serif;
+       -webkit-text-size-adjust:100%}
+  .p{max-width:47rem;margin:0 auto;padding:0 1.25rem}
+
+  header{padding:3rem 0 1.6rem;border-bottom:2px solid var(--tinta)}
+  .selo{font:500 .72rem/1 "IBM Plex Mono",monospace;letter-spacing:.16em;
+        text-transform:uppercase;color:var(--ambar)}
+  h1{font:600 clamp(2rem,7vw,3.1rem)/1.06 "Newsreader",Georgia,serif;
+     margin:.7rem 0 .5rem;letter-spacing:-.015em;text-wrap:balance}
+  .sub{font:400 clamp(1.02rem,2.4vw,1.2rem)/1.5 "Newsreader",Georgia,serif;
+       color:var(--tinta2);font-style:italic;max-width:34rem}
+  .cred{margin-top:1.3rem;font-size:.83rem;color:var(--tinta3);line-height:1.5}
+
+  h2{font:600 clamp(1.3rem,4vw,1.7rem)/1.18 "Newsreader",Georgia,serif;
+     margin:3rem 0 .3rem;letter-spacing:-.01em;text-wrap:balance}
+  h2 .num{font:500 .68rem/1 "IBM Plex Mono",monospace;color:var(--ambar);
+          display:block;letter-spacing:.16em;margin-bottom:.5rem}
+  h3{font:600 1.02rem/1.3 "Public Sans",sans-serif;margin:1.8rem 0 .4rem}
+  p{margin:.85rem 0}
+  .lead{font:400 1.1rem/1.6 "Newsreader",Georgia,serif;color:var(--tinta)}
+  strong{font-weight:600}
+  em.q{font-style:italic;color:var(--tinta2)}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));
+         gap:.7rem;margin:1.6rem 0}
+  .tile{background:var(--sup);border:1px solid var(--linha);border-radius:8px;padding:.9rem}
+  .tile .n{font:500 1.85rem/1 "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+           letter-spacing:-.02em;display:block}
+  .tile .l{font-size:.78rem;color:var(--tinta3);margin-top:.35rem;display:block;line-height:1.35}
+  .tile.a .n{color:var(--ambar)} .tile.z .n{color:var(--azul)}
+
+  figure{margin:1.5rem 0;background:var(--sup);border:1px solid var(--linha);
+         border-radius:10px;padding:1rem .9rem .8rem;overflow-x:auto}
+  figcaption{font-size:.82rem;color:var(--tinta3);margin-top:.7rem;line-height:1.45}
+  .leg{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.7rem;font-size:.82rem}
+  .leg i{width:.62rem;height:.62rem;border-radius:2px;display:inline-block;margin-right:.35rem}
+  text.axis{font:400 10.5px "IBM Plex Mono",monospace;fill:var(--tinta3)}
+  text.val{font:500 10.5px "IBM Plex Mono",monospace;fill:var(--tinta2)}
+  text.pct{font:500 10px "IBM Plex Mono",monospace;fill:var(--ambar)}
+  .ta-mid{text-anchor:middle} .ta-end{text-anchor:end}
+  line.grid{stroke:var(--grade);stroke-width:1}
+  rect{transition:opacity .12s} rect:hover{opacity:.78;cursor:default}
+
+  .bh{display:flex;flex-direction:column;gap:.3rem}
+  .bh-l{display:grid;grid-template-columns:minmax(6rem,13rem) 1fr auto;
+        gap:.5rem;align-items:center;font-size:.84rem}
+  .bh-n{color:var(--tinta);overflow-wrap:anywhere;line-height:1.3}
+  .bh-b{background:var(--sup2);border-radius:3px;height:.72rem;overflow:hidden}
+  .bh-b i{display:block;height:100%;border-radius:0 3px 3px 0}
+  .bh-v{font:500 .82rem "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+        color:var(--tinta);min-width:3.4rem;text-align:right}
+  .bh-x{grid-column:1/-1;font-size:.72rem;color:var(--tinta3);margin:-.15rem 0 .3rem}
+
+  blockquote{margin:1.3rem 0;padding:.9rem 1.1rem;background:var(--ambar-fraco);
+             border-left:3px solid var(--ambar);border-radius:0 7px 7px 0;
+             font:400 1rem/1.55 "Newsreader",Georgia,serif}
+  blockquote cite{display:block;margin-top:.6rem;font:400 .8rem "Public Sans",sans-serif;
+                  font-style:normal;color:var(--tinta2)}
+
+  table{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.86rem}
+  th,td{padding:.5rem .55rem;text-align:left;border-bottom:1px solid var(--linha2)}
+  th{font:600 .74rem/1.2 "Public Sans",sans-serif;text-transform:uppercase;
+     letter-spacing:.05em;color:var(--tinta3);border-bottom:1px solid var(--linha)}
+  td.n{font:500 .84rem "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;text-align:right}
+  .wrap-t{overflow-x:auto}
+
+  .prop{background:var(--sup);border:1px solid var(--linha);border-radius:9px;
+        padding:1rem 1.1rem;margin:.75rem 0}
+  .prop h3{margin:0 0 .35rem;font-size:1rem}
+  .prop .pq{font-size:.85rem;color:var(--tinta2);margin:.4rem 0 0}
+  .prop .pq b{color:var(--ambar);font-weight:600}
+  .prop .idx{font:500 .7rem "IBM Plex Mono",monospace;color:var(--tinta3);
+             letter-spacing:.1em;display:block;margin-bottom:.3rem}
+
+  .nota{background:var(--sup2);border-radius:8px;padding:.9rem 1rem;font-size:.86rem;
+        color:var(--tinta2);margin:1.3rem 0}
+  .nota b{color:var(--tinta)}
+  footer{margin:3.5rem 0 2rem;padding-top:1.2rem;border-top:2px solid var(--tinta);
+         font-size:.8rem;color:var(--tinta3);line-height:1.6}
+  @media print{
+    body{background:#fff}
+    figure,.tile,.prop{break-inside:avoid;box-shadow:none}
+    h2{break-after:avoid} header{padding-top:0}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head><body><div style="background:var(--sup);border-bottom:1px solid var(--linha);padding:.55rem 1.25rem;font-size:.8rem;color:var(--tinta3);text-align:center">Movimento Social da Dança RJ · encontro 10 de setembro de 2026, 11h, Cinelândia</div><div class="p">
+<header>
+  <div class="selo">Relatório · Setembro de 2026</div>
+  <h1>A dança que a cidade não conta</h1>
+  <p class="sub">Um setor com 17 anos de idade média, 20 anos de relação com o município
+     e nenhum lugar na estatística pública.</p>
+  <p class="cred">
+    Levantamento sobre organizações de dança social no município e no estado do Rio de Janeiro.<br>
+    Produzido para o encontro <b>Movimento Social da Dança RJ</b> — 10 de setembro de 2026,
+    Praça Floriano Peixoto 51, Cinelândia — a convite da vereadora <b>Verônica Lima</b>.<br>
+    Articulação: Sede do Movimento · Carlos Fontinelle e André Adami.
+  </p>
+</header>
+
+<h2><span class="num">A tese</span>Um setor que existe, dura e não é contado</h2>
+<p class="lead">Existe no Rio uma rede de organizações que ensina dança a crianças e jovens de
+território popular. Ela tem <strong>idade média de 17 anos</strong>, aparece nos atos oficiais do
+município <strong>desde 2002</strong>, e atende milhares de pessoas. Ela não aparece nas
+estatísticas do setor cultural porque <strong>não está registrada como dança</strong> — registra-se
+como defesa de direitos e serviço social, que é o que ela entende que faz.</p>
+<p>Por não ser contável, não é orçamentável. Quando a Secretaria de Cultura desenha um edital
+filtrando atividade artística, essas organizações não aparecem. Quando a Assistência Social desenha
+o dela, também não, porque o que elas fazem é arte. <strong>Elas caem no vão entre as duas
+políticas</strong> — e é nesse vão que estão há vinte anos.</p>
+<p>Este relatório não pede a criação de um setor. Pede o reconhecimento de um setor que já existe.</p>
+
+<div class="tiles">
+  <div class="tile a"><span class="n">16.470</span><span class="l">pessoas atendidas, declaradas por 15 organizações</span></div>
+  <div class="tile z"><span class="n">89%</span><span class="l">não têm um único empregado formal</span></div>
+  <div class="tile a"><span class="n">30%</span><span class="l">do que a Rouanet aprovou virou dinheiro de fato</span></div>
+  <div class="tile z"><span class="n">17</span><span class="l">anos de idade média das organizações</span></div>
+</div>
+
+<h2><span class="num">01 · Quantas são</span>Entre 131 e 531 — e a imprecisão é o problema</h2>
+<p>Não existe resposta única, e isso não é falha da pesquisa. Contamos as organizações de dança do
+estado por três critérios diferentes e o resultado varia por um fator de quatro:</p>
+<div class="wrap-t"><table>
+  <tr><th>critério</th><th class="n">estado</th><th class="n">capital</th><th>o que ele inclui por engano</th></tr>
+  <tr><td>dança em qualquer CNAE</td><td class="n">531</td><td class="n">277</td>
+      <td>a Fundação de apoio à UFF e uma fundação educacional de Vassouras — universidades com curso de dança</td></tr>
+  <tr><td>dança como CNAE principal</td><td class="n">131</td><td class="n">60</td>
+      <td>a Orquestra Sinfônica de Barra Mansa, cujo maior projeto é música nas escolas</td></tr>
+  <tr><td>camadas com exclusões</td><td class="n">457</td><td class="n">229</td>
+      <td>Museu, Sala Cecília Meireles, escolas de samba</td></tr>
+</table></div>
+
+<h3>O teste que decide a questão</h3>
+<p>Das <strong>15 organizações que responderam ao formulário deste encontro</strong> — organizações
+reais, ativas, que somadas declaram 16.470 pessoas atendidas — apenas <strong>três</strong> constam
+da base oficial de organizações da sociedade civil. E nenhuma das três está classificada como dança:</p>
+<div class="wrap-t"><table>
+  <tr><th>organização</th><th>como está registrada</th></tr>
+  <tr><td>Instituto Espaço Aberto</td><td>associações de defesa de direitos sociais</td></tr>
+  <tr><td>Instituto Verde Criando Vidas</td><td>serviço social sem alojamento</td></tr>
+  <tr><td>Instituto Efeito Urbano</td><td>associações de defesa de direitos sociais</td></tr>
+</table></div>
+<p>As outras doze não têm registro na base — ou não têm CNPJ. <strong>Nenhum filtro por atividade
+cultural encontraria essas organizações.</strong></p>
+<p>E não se trata de erro de cadastro: é autoconhecimento. Elas se registraram como defesa de
+direitos porque é isso que fazem. A dança é o meio, não o fim.</p>
+
+<h2><span class="num">02 · Idade</span>Seis décadas sem política pública</h2>
+<p>Este é o dado mais sólido do relatório, porque vem da data de registro e não depende de
+classificação:</p>
+<figure><svg viewBox="0 0 760 220" role="img" aria-label="Década de fundação das organizações de dança do estado do Rio" style="width:100%;height:auto"><rect x="50.0" y="187.1" width="88.3" height="2.9" rx="4" fill="#1D6DAE"><title>1960s: 3 organizações fundadas</title></rect><text x="94.1" y="181.1" class="val ta-mid">3</text><text x="94.1" y="206" class="axis ta-mid">1960s</text><rect x="150.3" y="175.5" width="88.3" height="14.5" rx="4" fill="#1D6DAE"><title>1970s: 15 organizações fundadas</title></rect><text x="194.4" y="169.5" class="val ta-mid">15</text><text x="194.4" y="206" class="axis ta-mid">1970s</text><rect x="250.6" y="171.6" width="88.3" height="18.4" rx="4" fill="#1D6DAE"><title>1980s: 19 organizações fundadas</title></rect><text x="294.7" y="165.6" class="val ta-mid">19</text><text x="294.7" y="206" class="axis ta-mid">1980s</text><rect x="350.9" y="155.2" width="88.3" height="34.8" rx="4" fill="#1D6DAE"><title>1990s: 36 organizações fundadas</title></rect><text x="395.0" y="149.2" class="val ta-mid">36</text><text x="395.0" y="206" class="axis ta-mid">1990s</text><rect x="451.1" y="69.1" width="88.3" height="120.9" rx="4" fill="#1D6DAE"><title>2000s: 125 organizações fundadas</title></rect><text x="495.3" y="63.1" class="val ta-mid">125</text><text x="495.3" y="206" class="axis ta-mid">2000s</text><rect x="551.4" y="14.0" width="88.3" height="176.0" rx="4" fill="#1D6DAE"><title>2010s: 182 organizações fundadas</title></rect><text x="595.6" y="8.0" class="val ta-mid">182</text><text x="595.6" y="206" class="axis ta-mid">2010s</text><rect x="651.7" y="115.5" width="88.3" height="74.5" rx="4" fill="#1D6DAE"><title>2020s: 77 organizações fundadas</title></rect><text x="695.9" y="109.5" class="val ta-mid">77</text><text x="695.9" y="206" class="axis ta-mid">2020s</text></svg>
+  <figcaption>Década de fundação das organizações de dança do estado do Rio de Janeiro.
+  Mais antiga: 1966. Fonte: Mapa das OSCs (IPEA), dados de dezembro de 2024.</figcaption>
+</figure>
+<p><strong>77% têm mais de dez anos de atuação. 29% têm mais de vinte.</strong> A idade
+média é de 17 anos e a mais antiga é de 1966. Elas atravessaram seis décadas sem
+política pública dedicada — o que desmonta o argumento de que apoiar o setor seria financiar
+aventura de curto prazo. O setor já provou que dura. O que ele não teve foi apoio.</p>
+
+<h2><span class="num">03 · Dinheiro</span>O Estado aprova, o mercado não paga</h2>
+<p>A Lei Rouanet é hoje o principal instrumento federal de financiamento cultural. Para dança no
+estado do Rio, entre 2019 e 2026, ela aprovou <strong>R$ 436,5 mi</strong> em
+253 projetos — dos quais 204 na capital. Desse total, o que efetivamente virou
+patrocínio foi <strong>R$ 129,9 mi</strong>.</p>
+<figure>
+  <div class="leg"><span><i style="background:#1D6DAE"></i>aprovado pelo Ministério</span>
+    <span><i style="background:#C06A12"></i>captado de fato no mercado</span></div>
+  <svg viewBox="0 0 760 300" role="img" aria-label="Lei Rouanet: valor aprovado e valor efetivamente captado para dança no Rio de Janeiro, 2019 a 2026" style="width:100%;height:auto"><line x1="66" y1="266.0" x2="746" y2="266.0" class="grid"/><text x="58" y="270.0" class="axis ta-end">0 mi</text><line x1="66" y1="203.5" x2="746" y2="203.5" class="grid"/><text x="58" y="207.5" class="axis ta-end">30 mi</text><line x1="66" y1="141.0" x2="746" y2="141.0" class="grid"/><text x="58" y="145.0" class="axis ta-end">60 mi</text><line x1="66" y1="78.5" x2="746" y2="78.5" class="grid"/><text x="58" y="82.5" class="axis ta-end">90 mi</text><line x1="66" y1="16.0" x2="746" y2="16.0" class="grid"/><text x="58" y="20.0" class="axis ta-end">120 mi</text><rect x="73.0" y="210.8" width="35.5" height="55.2" rx="4" fill="#1D6DAE"><title>2019 · aprovado: R$ 26,5 mi</title></rect><rect x="110.5" y="232.2" width="35.5" height="33.8" rx="4" fill="#C06A12"><title>2019 · captado: R$ 16,2 mi</title></rect><text x="108.5" y="281" class="axis ta-mid">2019</text><text x="108.5" y="295" class="pct ta-mid">61%</text><rect x="158.0" y="210.8" width="35.5" height="55.2" rx="4" fill="#1D6DAE"><title>2020 · aprovado: R$ 26,5 mi</title></rect><rect x="195.5" y="227.0" width="35.5" height="39.0" rx="4" fill="#C06A12"><title>2020 · captado: R$ 18,7 mi</title></rect><text x="193.5" y="281" class="axis ta-mid">2020</text><text x="193.5" y="295" class="pct ta-mid">71%</text><rect x="243.0" y="240.7" width="35.5" height="25.3" rx="4" fill="#1D6DAE"><title>2021 · aprovado: R$ 12,1 mi</title></rect><rect x="280.5" y="245.3" width="35.5" height="20.7" rx="4" fill="#C06A12"><title>2021 · captado: R$ 9,9 mi</title></rect><text x="278.5" y="281" class="axis ta-mid">2021</text><text x="278.5" y="295" class="pct ta-mid">82%</text><rect x="328.0" y="236.1" width="35.5" height="29.9" rx="4" fill="#1D6DAE"><title>2022 · aprovado: R$ 14,4 mi</title></rect><rect x="365.5" y="258.3" width="35.5" height="7.7" rx="4" fill="#C06A12"><title>2022 · captado: R$ 3,7 mi</title></rect><text x="363.5" y="281" class="axis ta-mid">2022</text><text x="363.5" y="295" class="pct ta-mid">26%</text><rect x="413.0" y="125.9" width="35.5" height="140.1" rx="4" fill="#1D6DAE"><title>2023 · aprovado: R$ 67,3 mi</title></rect><rect x="450.5" y="225.7" width="35.5" height="40.3" rx="4" fill="#C06A12"><title>2023 · captado: R$ 19,4 mi</title></rect><text x="448.5" y="281" class="axis ta-mid">2023</text><text x="448.5" y="295" class="pct ta-mid">29%</text><rect x="498.0" y="19.8" width="35.5" height="246.2" rx="4" fill="#1D6DAE"><title>2024 · aprovado: R$ 118,2 mi</title></rect><rect x="535.5" y="173.8" width="35.5" height="92.2" rx="4" fill="#C06A12"><title>2024 · captado: R$ 44,3 mi</title></rect><text x="533.5" y="281" class="axis ta-mid">2024</text><text x="533.5" y="295" class="pct ta-mid">37%</text><rect x="583.0" y="66.6" width="35.5" height="199.4" rx="4" fill="#1D6DAE"><title>2025 · aprovado: R$ 95,7 mi</title></rect><rect x="620.5" y="232.6" width="35.5" height="33.4" rx="4" fill="#C06A12"><title>2025 · captado: R$ 16,0 mi</title></rect><text x="618.5" y="281" class="axis ta-mid">2025</text><text x="618.5" y="295" class="pct ta-mid">17%</text><rect x="668.0" y="108.0" width="35.5" height="158.0" rx="4" fill="#1D6DAE"><title>2026 · aprovado: R$ 75,9 mi</title></rect><rect x="705.5" y="262.3" width="35.5" height="3.7" rx="4" fill="#C06A12"><title>2026 · captado: R$ 1,8 mi</title></rect><text x="703.5" y="281" class="axis ta-mid">2026</text><text x="703.5" y="295" class="pct ta-mid">2%</text></svg>
+  <figcaption>Lei Rouanet, segmento dança, estado do Rio de Janeiro. Em âmbar sob cada ano, o
+  percentual do aprovado que se converteu em patrocínio. Fonte: API do Salic/MinC,
+  consultada em 8 de setembro de 2026.</figcaption>
+</figure>
+<p><strong>70% da autorização nunca virou dinheiro.</strong> E a taxa está em queda
+livre: era 61% em 2019, foi 2% em 2026.</p>
+<p>A razão é estrutural. Renúncia fiscal transfere ao proponente a tarefa de vender o projeto a uma
+empresa. Uma organização de território, sem departamento de captação e sem acesso a diretor de
+marketing, não compete nesse mercado. <strong>Para esse perfil, a Rouanet é uma autorização que não
+se realiza.</strong></p>
+
+<h3>E o repasse direto é quase inexistente</h3>
+<p>Na base de recursos do Mapa das OSCs, considerando o universo depurado, apenas
+<strong>4 organizações</strong> receberam algum repasse público em toda a série histórica,
+somando <strong>R$ 326 mil</strong>. Quatro organizações. E apenas <strong>4</strong> têm
+certificação (OSCIP, CEBAS ou Utilidade Pública) — sem a qual a maior parte dos instrumentos de
+repasse é inacessível. <strong>A barreira é cartorial, não de mérito.</strong></p>
+<blockquote>Atua sem nenhuma ajuda ou benefício nem público, nem privado, sobrevivendo somente com
+  ajuda de amigos e parceiros.
+  <cite>Projeto Dançar, Méier — resposta ao formulário deste encontro</cite></blockquote>
+
+<h2><span class="num">04 · Trabalho</span>293 empregos formais em todo o setor</h2>
+<p>Consultamos o cruzamento RAIS de 358 organizações, uma a uma. O resultado:</p>
+<div class="tiles">
+  <div class="tile z"><span class="n">89%</span><span class="l">com zero empregado formal</span></div>
+  <div class="tile a"><span class="n">40</span><span class="l">organizações que empregam alguém</span></div>
+  <div class="tile z"><span class="n">293</span><span class="l">vínculos formais em todo o setor</span></div>
+</div>
+<p>As 358 organizações juntas mantêm <strong>293 vínculos formais de trabalho</strong>
+— menos que uma fábrica de porte médio. E as maiores empregadoras não são organizações de dança:</p>
+<figure><div class="bh"><div class="bh-l"><span class="bh-n">Clube Dos Suboficiais E Sargentos Da Aeronautica</span><span class="bh-b"><i style="width:100.0%;background:#1D6DAE"></i></span><span class="bh-v">38</span><span class="bh-x">Rio De Janeiro</span></div><div class="bh-l"><span class="bh-n">Gresuv</span><span class="bh-b"><i style="width:73.7%;background:#1D6DAE"></i></span><span class="bh-v">28</span><span class="bh-x">Niterói</span></div><div class="bh-l"><span class="bh-n">Casa De Portugal</span><span class="bh-b"><i style="width:71.1%;background:#1D6DAE"></i></span><span class="bh-v">27</span><span class="bh-x">Teresópolis</span></div><div class="bh-l"><span class="bh-n">Esct</span><span class="bh-b"><i style="width:65.8%;background:#1D6DAE"></i></span><span class="bh-v">25</span><span class="bh-x">São João De Meriti</span></div><div class="bh-l"><span class="bh-n">Associacao Ballet Manguinhos</span><span class="bh-b"><i style="width:52.6%;background:#1D6DAE"></i></span><span class="bh-v">20</span><span class="bh-x">Rio De Janeiro</span></div><div class="bh-l"><span class="bh-n">Gremio Recreativo Escola De Samba Beija Flor</span><span class="bh-b"><i style="width:44.7%;background:#1D6DAE"></i></span><span class="bh-v">17</span><span class="bh-x">Nilópolis</span></div><div class="bh-l"><span class="bh-n">Instituto Para O Desenvolvimento Do Esporte E Da Cultura - Idec</span><span class="bh-b"><i style="width:36.8%;background:#1D6DAE"></i></span><span class="bh-v">14</span><span class="bh-x">Rio De Janeiro</span></div><div class="bh-l"><span class="bh-n">Gacemss</span><span class="bh-b"><i style="width:34.2%;background:#1D6DAE"></i></span><span class="bh-v">13</span><span class="bh-x">Volta Redonda</span></div><div class="bh-l"><span class="bh-n">Clube Dos Suboficiais E Sargentos Da Aeronautica</span><span class="bh-b"><i style="width:34.2%;background:#1D6DAE"></i></span><span class="bh-v">13</span><span class="bh-x">Rio De Janeiro</span></div><div class="bh-l"><span class="bh-n">Comunidade Catolica Shalom Rio De Janeiro Catete</span><span class="bh-b"><i style="width:31.6%;background:#1D6DAE"></i></span><span class="bh-v">12</span><span class="bh-x">Rio De Janeiro</span></div></div>
+  <figcaption>Vínculos formais ativos por organização. Fonte: cruzamento RAIS/MTE servido pelo
+  Mapa das OSCs (IPEA).</figcaption>
+</figure>
+<p>Clube militar, escola de samba, casa regional, comunidade religiosa — entidades grandes que têm
+dança entre suas atividades. <strong>A maior empregadora genuinamente de dança social é a
+Associação Ballet Manguinhos, com 20 vínculos</strong>, que também tem 11 projetos na Rouanet e 62
+menções no Diário Oficial. É a exceção que mostra o teto do possível quando uma organização do setor
+consegue se estruturar.</p>
+<p>O trabalho existe; o vínculo não. As organizações descrevem professores, ensaiadores e
+assistentes — trabalho real, não registrado. <strong>Exigir equipe formalizada em edital elimina 89%
+do setor antes da primeira linha do projeto.</strong></p>
+
+<h2><span class="num">05 · Relação com o município</span>499 menções no Diário Oficial, desde 2002</h2>
+<p>Verificamos 18 organizações no Diário Oficial do Município do Rio, conferindo o texto de
+cada documento. <strong>14 aparecem, somando 499 menções reais.</strong></p>
+<figure><div class="bh"><div class="bh-l"><span class="bh-n">Centro Coreografico</span><span class="bh-b"><i style="width:100.0%;background:#1D6DAE"></i></span><span class="bh-v">120</span><span class="bh-x">2016-11 → 2026-07</span></div><div class="bh-l"><span class="bh-n">Associacao Dancando Para Nao Dancar</span><span class="bh-b"><i style="width:63.3%;background:#1D6DAE"></i></span><span class="bh-v">76</span><span class="bh-x">2006-08 → 2025-10</span></div><div class="bh-l"><span class="bh-n">Associacao Ballet Manguinhos</span><span class="bh-b"><i style="width:51.7%;background:#1D6DAE"></i></span><span class="bh-v">62</span><span class="bh-x">2018-11 → 2026-09</span></div><div class="bh-l"><span class="bh-n">Organizacao Nao Governamental Dancar A Vida</span><span class="bh-b"><i style="width:51.7%;background:#1D6DAE"></i></span><span class="bh-v">62</span><span class="bh-x">2006-09 → 2026-09</span></div><div class="bh-l"><span class="bh-n">Instituto Efeito Urbano</span><span class="bh-b"><i style="width:39.2%;background:#1D6DAE"></i></span><span class="bh-v">47</span><span class="bh-x">2020-10 → 2026-09</span></div><div class="bh-l"><span class="bh-n">Cia Livre De Danca Da Rocinha</span><span class="bh-b"><i style="width:28.3%;background:#1D6DAE"></i></span><span class="bh-v">34</span><span class="bh-x">2013-11 → 2026-05</span></div><div class="bh-l"><span class="bh-n">Perifa Cultural</span><span class="bh-b"><i style="width:23.3%;background:#1D6DAE"></i></span><span class="bh-v">28</span><span class="bh-x">2026-02 → 2026-09</span></div><div class="bh-l"><span class="bh-n">Associacao De Ballet Do Rio De Janeiro</span><span class="bh-b"><i style="width:20.8%;background:#1D6DAE"></i></span><span class="bh-v">25</span><span class="bh-x">2003-09 → 2026-07</span></div><div class="bh-l"><span class="bh-n">Escola Carioca De Dancas Negras</span><span class="bh-b"><i style="width:13.3%;background:#1D6DAE"></i></span><span class="bh-v">16</span><span class="bh-x">2015-06 → 2026-05</span></div><div class="bh-l"><span class="bh-n">Cdpd-Rj</span><span class="bh-b"><i style="width:10.0%;background:#1D6DAE"></i></span><span class="bh-v">12</span><span class="bh-x">2002-11 → 2023-12</span></div><div class="bh-l"><span class="bh-n">Associacao Cultural Afro Carioca</span><span class="bh-b"><i style="width:5.8%;background:#1D6DAE"></i></span><span class="bh-v">7</span><span class="bh-x">2013-09 → 2025-06</span></div><div class="bh-l"><span class="bh-n">Instituto Verde Criando Vidas</span><span class="bh-b"><i style="width:3.3%;background:#1D6DAE"></i></span><span class="bh-v">4</span><span class="bh-x">2007-12 → 2011-11</span></div><div class="bh-l"><span class="bh-n">Instituto Espaco Aberto</span><span class="bh-b"><i style="width:2.5%;background:#1D6DAE"></i></span><span class="bh-v">3</span><span class="bh-x">2024-05 → 2024-07</span></div><div class="bh-l"><span class="bh-n">Grupo De Danca Dissidio Coletivo</span><span class="bh-b"><i style="width:2.5%;background:#1D6DAE"></i></span><span class="bh-v">3</span><span class="bh-x">2015-06 → 2024-07</span></div></div>
+  <figcaption>Menções verificadas no Diário Oficial do Município do Rio de Janeiro, com o período
+  coberto. Contagem conferida documento por documento — o total informado pelo buscador é inflado
+  em cerca de duas vezes.</figcaption>
+</figure>
+<p>A relação com o poder público municipal <strong>não é nova</strong>: Dançando Para Não Dançar e
+Dançar a Vida aparecem nos atos oficiais desde 2006; a Associação de Ballet do Rio desde 2003; o
+CDPD-RJ desde 2002. Não se trata de inventar um vínculo, e sim de estruturar um que já tem duas
+décadas de rastro documental.</p>
+<p>E o contraste dentro da própria série diz muito: o <strong>Centro Coreográfico</strong>, que é
+equipamento municipal, tem 120 menções. As organizações que atendem favela têm 3, 4, 7.</p>
+<blockquote>Enquanto criança fui menina de projeto e a dança transformou minha vida. Sou formada em
+  Barcelona e no Brasil, e hoje levo sonho para essas comunidades — sem apoio e sem patrocínio e o
+  pior, sem o reconhecimento de governantes.
+  <cite>Yolanda Demetrio, Instituto Espaço Aberto — mais de 20 anos, 3 mil pessoas atendidas em sete
+  territórios. Tem três menções no Diário Oficial, todas em 2024.</cite></blockquote>
+
+<h2><span class="num">06 · Escala</span>16.470 pessoas, declaradas por quem as atende</h2>
+<p>Nenhuma base pública registra quantas pessoas essas organizações atendem. O Mapa das OSCs não
+tem o dado, a Rouanet não tem, e os próprios sites quase nunca o declaram
+(8 de 106 analisados). O único lugar onde ele existe é o formulário deste
+encontro — porque quem respondeu foi quem dirige o projeto.</p>
+<figure><div class="bh"><div class="bh-l"><span class="bh-n">Instituto Efeito Urbano</span><span class="bh-b"><i style="width:100.0%;background:#C06A12"></i></span><span class="bh-v">7.000</span><span class="bh-x">+10 anos · Morro da Providência</span></div><div class="bh-l"><span class="bh-n">Instituto Espaço Aberto</span><span class="bh-b"><i style="width:42.9%;background:#C06A12"></i></span><span class="bh-v">3.000</span><span class="bh-x">+20 anos · 7 territórios</span></div><div class="bh-l"><span class="bh-n">Espaço Aberto Gardênia Azul</span><span class="bh-b"><i style="width:28.6%;background:#C06A12"></i></span><span class="bh-v">2.000</span><span class="bh-x">+10 anos · Gardênia Azul</span></div><div class="bh-l"><span class="bh-n">ACANE – Artes Negras</span><span class="bh-b"><i style="width:25.7%;background:#C06A12"></i></span><span class="bh-v">1.800</span><span class="bh-x">+10 anos · Rocha / Andaraí</span></div><div class="bh-l"><span class="bh-n">Instituto Verde Criando Vidas</span><span class="bh-b"><i style="width:22.9%;background:#C06A12"></i></span><span class="bh-v">1.600</span><span class="bh-x">+10 anos · Engenho da Rainha</span></div><div class="bh-l"><span class="bh-n">EntrArte</span><span class="bh-b"><i style="width:4.3%;background:#C06A12"></i></span><span class="bh-v">300</span><span class="bh-x">+10 anos · Complexo do Lins</span></div><div class="bh-l"><span class="bh-n">Projeto Vida (Lyceu)</span><span class="bh-b"><i style="width:2.9%;background:#C06A12"></i></span><span class="bh-v">200</span><span class="bh-x">+20 anos · desde 1998</span></div><div class="bh-l"><span class="bh-n">Artistas da Lua</span><span class="bh-b"><i style="width:2.9%;background:#C06A12"></i></span><span class="bh-v">200</span><span class="bh-x">+5 anos · Barreto, Niterói</span></div><div class="bh-l"><span class="bh-n">Projeto Social Dançar faz Bem</span><span class="bh-b"><i style="width:1.7%;background:#C06A12"></i></span><span class="bh-v">120</span><span class="bh-x">10 anos · 3 polos</span></div><div class="bh-l"><span class="bh-n">Cia Livre de Dança da Rocinha</span><span class="bh-b"><i style="width:1.4%;background:#C06A12"></i></span><span class="bh-v">100</span><span class="bh-x">+20 anos · Rocinha — Ponto de Cultura</span></div><div class="bh-l"><span class="bh-n">Dança para Todos / CAED</span><span class="bh-b"><i style="width:0.9%;background:#C06A12"></i></span><span class="bh-v">61</span><span class="bh-x">+10 anos · Nova Iguaçu</span></div><div class="bh-l"><span class="bh-n">Projeto Dançar</span><span class="bh-b"><i style="width:0.4%;background:#C06A12"></i></span><span class="bh-v">30</span><span class="bh-x">+5 anos · Méier</span></div><div class="bh-l"><span class="bh-n">Dança Educa</span><span class="bh-b"><i style="width:0.4%;background:#C06A12"></i></span><span class="bh-v">30</span><span class="bh-x">+5 anos · Cidade de Deus</span></div><div class="bh-l"><span class="bh-n">Dançar (CADM)</span><span class="bh-b"><i style="width:0.2%;background:#C06A12"></i></span><span class="bh-v">15</span><span class="bh-x">+20 anos</span></div><div class="bh-l"><span class="bh-n">Made In La Vie</span><span class="bh-b"><i style="width:0.2%;background:#C06A12"></i></span><span class="bh-v">14</span><span class="bh-x">+3 anos · Bonsucesso</span></div></div>
+  <figcaption>Pessoas atendidas até 2026, conforme declaração das próprias organizações no
+  formulário de inscrição do encontro, com tempo de atuação e território.</figcaption>
+</figure>
+<p><strong>Quinze organizações declaram 16.470 pessoas atendidas.</strong> A mediana é de 200 por
+organização; a média é puxada pelo Instituto Efeito Urbano, com 7 mil.</p>
+<div class="nota"><b>Este número não deve ser extrapolado.</b> Multiplicar a mediana pelas
+organizações da capital produziria um total que não se sustenta, porque quem respondeu ao formulário
+é justamente quem está mais organizado. O que se pode afirmar é o que está escrito: quinze
+organizações, 16.470 pessoas.</div>
+<blockquote>Pioneira no ensino regular da dança no território, a instituição se destaca por ser
+  formada e administrada por jovens mulheres crias do Morro da Providência — Pequena África.
+  <cite>Instituto Efeito Urbano, 7 mil pessoas atendidas</cite></blockquote>
+<blockquote>Acolhemos alunos com deficiência física, autismo, síndrome de Down, TDAH e outras
+  necessidades, acreditando que a dança é para todos. É uma luta constante, cheia de desafios, mas
+  nunca desistimos.
+  <cite>Dança para Todos / CAED, Nova Iguaçu</cite></blockquote>
+
+<h2><span class="num">07 · Território</span>Onde estão, e onde a pesquisa não alcança</h2>
+<figure><div class="bh"><div class="bh-l"><span class="bh-n">Niterói</span><span class="bh-b"><i style="width:100.0%;background:#1D6DAE"></i></span><span class="bh-v">26</span></div><div class="bh-l"><span class="bh-n">Duque De Caxias</span><span class="bh-b"><i style="width:92.3%;background:#1D6DAE"></i></span><span class="bh-v">24</span></div><div class="bh-l"><span class="bh-n">Nova Iguaçu</span><span class="bh-b"><i style="width:46.2%;background:#1D6DAE"></i></span><span class="bh-v">12</span></div><div class="bh-l"><span class="bh-n">Campos Dos Goytacazes</span><span class="bh-b"><i style="width:46.2%;background:#1D6DAE"></i></span><span class="bh-v">12</span></div><div class="bh-l"><span class="bh-n">Petrópolis</span><span class="bh-b"><i style="width:30.8%;background:#1D6DAE"></i></span><span class="bh-v">8</span></div><div class="bh-l"><span class="bh-n">Angra Dos Reis</span><span class="bh-b"><i style="width:30.8%;background:#1D6DAE"></i></span><span class="bh-v">8</span></div><div class="bh-l"><span class="bh-n">Macaé</span><span class="bh-b"><i style="width:26.9%;background:#1D6DAE"></i></span><span class="bh-v">7</span></div><div class="bh-l"><span class="bh-n">Cabo Frio</span><span class="bh-b"><i style="width:26.9%;background:#1D6DAE"></i></span><span class="bh-v">7</span></div><div class="bh-l"><span class="bh-n">Nova Friburgo</span><span class="bh-b"><i style="width:26.9%;background:#1D6DAE"></i></span><span class="bh-v">7</span></div><div class="bh-l"><span class="bh-n">São João De Meriti</span><span class="bh-b"><i style="width:26.9%;background:#1D6DAE"></i></span><span class="bh-v">7</span></div></div>
+  <figcaption>Organizações de dança fora da capital, por município. A capital concentra 229 das
+  457 do estado.</figcaption>
+</figure>
+<div class="nota"><b>Um viés que precisa ser declarado.</b> Analisamos 106 sites de
+organizações. Os territórios que eles citam são Copacabana, Barra da Tijuca, Recreio e Botafogo.
+Mas as organizações de projeto social que encontramos em campo estão na Rocinha, Cidade de Deus,
+Manguinhos, Vidigal, Gardênia Azul, Penha e Coelho Neto. <b>Ter site é privilégio de classe</b> —
+logo, qualquer levantamento feito pela internet subrepresenta exatamente a periferia. Este relatório
+combinou base pública, busca em mapa, redes sociais e dado primário justamente para corrigir isso.</div>
+
+<h2><span class="num">As propostas</span>Cinco medidas, cada uma respondendo a um número</h2>
+
+<div class="prop"><span class="idx">PROPOSTA 01</span>
+  <h3>Censo municipal dos projetos de dança, autodeclaratório e sem exigência de CNPJ</h3>
+  <p class="pq">Responde a: <b>12 de 15</b> organizações reais não existem na estatística oficial.
+  É a medida mais barata e destrava todas as outras — sem cadastro não há política pública possível.</p></div>
+
+<div class="prop"><span class="idx">PROPOSTA 02</span>
+  <h3>Marcador de "arte-educação em território" no cadastro municipal, transversal a Cultura e Assistência Social</h3>
+  <p class="pq">Responde a: a classificação atual obriga a organização a escolher uma porta e perder
+  a outra. Espaço Aberto e Efeito Urbano estão registrados como <b>defesa de direitos</b>; Verde
+  Criando Vidas, como <b>serviço social</b>. Nenhum edital de cultura as encontra.</p></div>
+
+<div class="prop"><span class="idx">PROPOSTA 03</span>
+  <h3>Linha de edital acessível a organização não certificada, ou apoio à obtenção de certificação</h3>
+  <p class="pq">Responde a: apenas <b>4 de 131</b> organizações têm OSCIP, CEBAS ou Utilidade
+  Pública — e sem certificação a maior parte dos instrumentos de repasse é inacessível.
+  A barreira é cartorial, não de mérito.</p></div>
+
+<div class="prop"><span class="idx">PROPOSTA 04</span>
+  <h3>Fomento direto em vez de renúncia fiscal, para organização de base territorial</h3>
+  <p class="pq">Responde a: <b>70%</b> do que a Rouanet aprovou para dança no Rio nunca
+  virou patrocínio, e a taxa de conversão caiu de 61% em 2019 para 2% em 2026. Renúncia fiscal exige
+  capacidade de captação que esse perfil de organização não tem.</p></div>
+
+<div class="prop"><span class="idx">PROPOSTA 05</span>
+  <h3>Tempo de atuação como critério de pontuação em edital</h3>
+  <p class="pq">Responde a: <b>77%</b> do setor tem mais de dez anos de operação contínua e
+  <b>29%</b> mais de vinte — e hoje isso não vale ponto nenhum em nenhum edital.</p></div>
+
+<h2><span class="num">Método</span>De onde vem cada número</h2>
+<div class="wrap-t"><table>
+  <tr><th>fonte</th><th>o que forneceu</th></tr>
+  <tr><td>Mapa das OSCs — IPEA</td><td>cadastro, data de fundação, recursos públicos, certificações e o cruzamento RAIS de vínculos formais</td></tr>
+  <tr><td>API do Salic — MinC</td><td>projetos de dança no RJ, valores aprovados e captados, 2019–2026</td></tr>
+  <tr><td>Diário Oficial do Município</td><td>menções verificadas documento por documento</td></tr>
+  <tr><td>Google Maps e Instagram</td><td>organizações sem registro formal, telefone e território</td></tr>
+  <tr><td>Sites das organizações</td><td>106 sites lidos; modalidades, parceiros e ano de fundação</td></tr>
+  <tr><td>Formulário do encontro</td><td>dado primário: pessoas atendidas, tempo de atuação, território</td></tr>
+</table></div>
+<p>O mapeamento de campo reuniu <strong>920 organizações</strong> deduplicadas, das quais
+252 com contato telefônico verificado.</p>
+
+<h3>Limites deste relatório</h3>
+<p>Organizações <strong>informais, sem CNPJ, não constam de base alguma</strong> — e a busca em
+campo indica que são muitas. Todo total aqui é, portanto, subestimado. O número de pessoas atendidas
+é <strong>autodeclarado</strong> e não auditado. Ficaram fora, por indisponibilidade técnica: os
+convênios do Portal da Transparência federal (exige credencial pessoal), os contemplados da Lei
+Paulo Gustavo e da Lei Aldir Blanc no RJ (publicados apenas em PDF por edital) e o Mapa da Cultura
+do MinC (bloqueado a acesso automatizado). A contagem de citações na internet foi levantada e
+descartada: mediu ambiguidade de nome, não relevância.</p>
+
+<footer>
+  Relatório produzido em 8 e 9 de setembro de 2026 para o encontro Movimento Social da Dança RJ.<br>
+  Todos os números são reproduzíveis a partir das fontes públicas citadas. Dados primários coletados
+  pela Sede do Movimento.<br>
+  Contato: Carlos Fontinelle e André Adami — Sede do Movimento.
+</footer>
+</div>
+</body></html>
